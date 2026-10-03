@@ -68,6 +68,7 @@ Analysis analyze_process(const LlmConfig& cfg, int pid) {
     return a;
   }
   static const std::string instructions =
+      "Provide a direct answer without thinking step-by-step. \n\n"
       "You describe one Linux process using only the facts below. Plain text, no markdown.\n\n"
       "Reply with these fields, one line each, each a single short sentence: WHAT (what the "
       "program is), DOING (what it is doing right now; name the script, project path or port if "
@@ -93,6 +94,7 @@ Analysis analyze_port(const LlmConfig& cfg, int port) {
     return a;
   }
   static const std::string instructions =
+      "Provide a direct answer without thinking step-by-step. \n\n"
       "You explain which application uses a network port, using only the facts below. Plain "
       "text, no markdown.\n\n"
       "Reply with these fields, one line each, each a single short sentence: APP (the program and "

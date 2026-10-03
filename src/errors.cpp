@@ -238,6 +238,7 @@ int report_errors(const std::string& log, const std::string& label, const LlmCon
   }
 
   static const std::string instructions =
+      "Provide a direct answer without thinking step-by-step. \n\n"
       "You diagnose one failed terminal command from its log. Plain text, no markdown.\n\n"
       "Reply with these fields: WHAT HAPPENED (one sentence), CAUSE (one sentence), and FIX (one "
       "to three numbered steps, one per line; a shell command goes on its own line starting "

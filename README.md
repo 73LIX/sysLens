@@ -5,9 +5,10 @@ htop/btop-style terminal monitor (processes + ports, realtime) with Gemma-powere
 ## Build (Arch)
 
 ```sh
-sudo pacman -S --needed base-devel cmake curl      # ftxui + nlohmann-json are fetched automatically
+git clone https://github.com/73LIX/sysLens.git
+cd sysLens
+sudo pacman -S --needed base-devel cmake curl
 cmake -S . -B build && cmake --build build -j
-sudo install -Dm755 build/sysLens /usr/local/bin/sysLens
 ```
 
 ## AI backend
@@ -15,12 +16,12 @@ sudo install -Dm755 build/sysLens /usr/local/bin/sysLens
 **Gemma through the API (default):** create a key in Google AI Studio, then
 
 ```sh
-export GEMINI_API_KEY=...            # add to ~/.zshrc or ~/.bashrc
-export SYSLENS_MODEL=gemma-3-1b-it   # optional; default is gemma-3n-e2b-it (~2B effective)
+export GEMINI_API_KEY=<key>            # add to ~/.zshrc or ~/.bashrc
+export SYSLENS_MODEL=gemma-4-26b-a4b-it   # optional; default is gemma-3n-e2b-it (~2B effective)
 ```
 
 **Local fallback (llama.cpp):** if the API fails or no key is set, sysLens talks to a local
-`llama-server` (OpenAI-compatible, `http://127.0.0.1:8080`).
+`llama-server` (`http://127.0.0.1:8080`).
 
 ```sh
 yay -S llama.cpp                                   # or build from source
@@ -39,7 +40,7 @@ sysLens                              # live TUI
 sysLens --process 1108 --analyze     # what is this process and what is it doing
 sysLens --port 3000 --analyze        # which app owns the port and why
 
-cargo build 2>&1 | sysLens --errors  # triage + explain piped output
+cargo build 2>&1 | sysLens --errors  # explain piped output
 sysLens run -- cmake --build build   # run a command; if it fails, triage + explain
 sysLens --run "npm install"          # same, as one quoted string
 sysLens --errors build.log --no-ai   # classification only, no model call
