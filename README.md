@@ -2,6 +2,9 @@
 
 htop/btop-style terminal monitor (processes + ports, realtime) with Gemma-powered diagnostics.
 
+## Demo video link:
+[asciinema](https://asciinema.org/a/AzLbCVAciZnI676l)
+
 ## Build (Arch)
 
 ```sh
